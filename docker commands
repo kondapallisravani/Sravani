@@ -1,0 +1,29 @@
+ mvn verify -Dweb.app.docker.ip=172.17.0.5 -Dhub.host.ip=192.168.40.192
+
+
+ sudo docker network create --subnet=172.18.0.0/16 mynet123
+
+sudo docker run --net mynet123 --ip 172.18.0.22 -itd ganeshtidke0901docker/petclinic
+
+
+
+
+sudo  docker run --net=mynet123 --rm -ti --name zalenium -p 4444:4444 -v /var/run/docker.sock:/var/run/docker.sock -v /tmp/videos:/home/seluser/videos --privileged dosel/zalenium  start --maxDockerSeleniumContainers 2
+
+
+sudo docker run -it --net=mynet123   ganeshtidke0901docker/selenium-bdd-poc  mvn verify -Dweb.app.docker.ip=172.18.0.22 -Dhub.host.ip=192.168.40.192
+
+
+
+
+stop all containers
+sudo docker stop $(sudo docker ps -aq)
+
+remove all containers
+sudo docker rm $(sudo docker ps -aq)
+
+remove all images
+sudo docker rmi $(sudo docker images -q)
+
+
+

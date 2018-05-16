@@ -1,0 +1,55 @@
+version: '2'
+services:
+  petclinic:
+    restart: always
+    container_name: petclinic
+    image: "karanbedi92/petclinic"
+    ports:
+     - "8080:8080"
+    networks:
+      mysubnet123:
+        ipv4_address: 172.18.0.22
+
+  cucumberscript:
+    container_name: cucumberscript
+    image: "ganeshtidke0901docker/selenium-bdd-poc"
+    command: mvn verify -Dweb.app.docker.ip=172.18.0.22 -Dhub.host.ip=192.168.40.192
+    links:
+      - petclinic
+      - zalenium
+    depends_on:
+      - petclinic
+      - zalenium
+    networks:
+      - mysubnet123
+
+  zalenium:
+    image: "dosel/zalenium"
+    container_name: zalenium
+    hostname: zalenium
+    tty: true
+    volumes:
+      - /tmp/videos:/home/seluser/videos
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/bin/docker:/usr/bin/docker
+    ports:
+      - 4444:4444
+    command: >
+      start --desiredContainers 2
+            --maxDockerSeleniumContainers 2
+            --screenWidth 800 --screenHeight 600
+            --timeZone "Europe/Berlin"
+            --videoRecordingEnabled true
+            --sauceLabsEnabled false
+            --browserStackEnabled false
+            --testingBotEnabled false
+            --startTunnel false
+    networks:
+     - mysubnet123
+
+networks:
+  mysubnet123:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 172.18.0.0/16

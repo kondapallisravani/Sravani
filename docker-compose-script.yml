@@ -1,0 +1,8 @@
+version: '3'
+services:
+  cucumberscript:
+    container_name: cucumberscript
+    image: "ganeshtidke0901docker/selenium-bdd-poc"
+    command: mvn verify -Dweb.app.docker.ip=172.18.0.22 -Dhub.host.ip=192.168.40.192
+    networks:
+     - mysubnet123
