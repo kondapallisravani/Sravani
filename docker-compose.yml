@@ -35,7 +35,6 @@ services:
     ports:
       - 4444:4444
     command: >
-      -d
       start --desiredContainers 2
             --maxDockerSeleniumContainers 2
             --screenWidth 800 --screenHeight 600
