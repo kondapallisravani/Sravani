@@ -23,6 +23,19 @@ services:
     networks:
       - mysubnet123
 
+    cucumbercraft:
+    container_name: cucumbercraft
+    image: "cucumbercraft"
+    command: mvn verify -Dweb.app.docker.ip=172.18.0.22 -Dhub.host.ip=192.168.40.192
+    links:
+      - petclinic
+      - zalenium
+    depends_on:
+      - petclinic
+      - zalenium
+    networks:
+      - mysubnet123
+
   zalenium:
     image: "dosel/zalenium"
     container_name: zalenium
@@ -36,14 +49,14 @@ services:
       - 4444:4444
     command: >
       start --desiredContainers 2
-            --maxDockerSeleniumContainers 2
-            --screenWidth 800 --screenHeight 600
-            --timeZone "Europe/Berlin"
-            --videoRecordingEnabled true
-            --sauceLabsEnabled false
-            --browserStackEnabled false
-            --testingBotEnabled false
-            --startTunnel false
+            --maxDockerSeleniumContainers 7
+#            --screenWidth 800 --screenHeight 600
+#            --timeZone "Europe/Berlin"
+#            --videoRecordingEnabled true
+#            --sauceLabsEnabled false
+#            --browserStackEnabled false
+#            --testingBotEnabled false
+#            --startTunnel false
     networks:
      - mysubnet123
 
