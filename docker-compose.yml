@@ -10,20 +10,20 @@ services:
       mysubnet123:
         ipv4_address: 172.18.0.22
 
-  cucumberscript:
-    container_name: cucumberscript
-    image: "ganeshtidke0901docker/selenium-bdd-poc"
-    command: mvn verify -Dweb.app.docker.ip=172.18.0.22 -Dhub.host.ip=192.168.40.192
-    links:
-      - petclinic
-      - zalenium
-    depends_on:
-      - petclinic
-      - zalenium
-    networks:
-      - mysubnet123
+#  cucumberscript:
+#    container_name: cucumberscript
+#    image: "ganeshtidke0901docker/selenium-bdd-poc"
+#    command: mvn verify -Dweb.app.docker.ip=172.18.0.22 -Dhub.host.ip=192.168.40.192
+#    links:
+#      - petclinic
+#      - zalenium
+#    depends_on:
+#      - petclinic
+#      - zalenium
+#    networks:
+#      - mysubnet123
 
-    cucumbercraft:
+  cucumbercraft:
     container_name: cucumbercraft
     image: "cucumbercraft"
     command: mvn verify -Dweb.app.docker.ip=172.18.0.22 -Dhub.host.ip=192.168.40.192
