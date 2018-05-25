@@ -11,13 +11,13 @@ cd cucumbercraft
 docker rmi cucumbercraft
 docker  build --tag cucumbercraft:latest .
 docker-compose up cucumbercraft
-rm /home/webapps/craftreport/cucumber-results-agg-test-results.html
-rm /home/webapps/craftreport/cucumber-results-feature-overview.html
-rm /home/webapps/craftreport/cucumber-results-test-results.pdf
-rm -rfd /home/qpaas/craftresult
+sudo rm /home/webapps/craftreport/cucumber-results-agg-test-results.html
+sudo rm /home/webapps/craftreport/cucumber-results-feature-overview.html
+sudo rm /home/webapps/craftreport/cucumber-results-test-results.pdf
+sudo rm -rfd /home/qpaas/craftresult
 docker cp cucumbercraft:/cucumbercraft/target/.  /home/qpaas/craftresult
-cp /home/qpaas/craftresult/* /home/qpaas/webapps/craftreport/
+sudo cp /home/qpaas/craftresult/* /home/qpaas/webapps/craftreport/
 echo "End of Execution"
 echo "please click below for aggregated result http://192.168.40.192:3389/craftreport/cucumber-results-agg-test-results.html"
-echo "please click below for overview result http://192.168.40.192:3389/craftreport/cucumber-results-feature-overview.html.html"
+echo "please click below for overview result http://192.168.40.192:3389/craftreport/cucumber-results-feature-overview.html"
 echo "please click below for test result in PDF http://192.168.40.192:3389/craftreport/cucumber-results-test-results.pdf"
