@@ -11,9 +11,9 @@ cd cucumbercraft
 docker rmi cucumbercraft
 docker  build --tag cucumbercraft:latest .
 docker-compose up cucumbercraft
-sudo rm /home/webapps/craftreport/cucumber-results-agg-test-results.html
-sudo rm /home/webapps/craftreport/cucumber-results-feature-overview.html
-sudo rm /home/webapps/craftreport/cucumber-results-test-results.pdf
+sudo rm /home/qpaas/webapps/craftreport/cucumber-results-agg-test-results.html
+sudo rm /home/qpaas/webapps/craftreport/cucumber-results-feature-overview.html
+sudo rm /home/qpaas/webapps/craftreport/cucumber-results-test-results.pdf
 sudo rm -rfd /home/qpaas/craftresult
 docker cp cucumbercraft:/cucumbercraft/target/.  /home/qpaas/craftresult
 sudo cp /home/qpaas/craftresult/* /home/qpaas/webapps/craftreport/
