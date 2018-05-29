@@ -26,7 +26,7 @@ services:
   cucumbercraft:
     container_name: cucumbercraft
     image: "cucumbercraft"
-    command: mvn verify -Dweb.app.docker.ip=172.18.0.22 -Dhub.host.ip=192.168.40.192
+    command: mvn verify site -Dweb.app.docker.ip=172.18.0.22 -Dhub.host.ip=192.168.40.192
     links:
       - petclinic
       - zalenium
