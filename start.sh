@@ -14,7 +14,7 @@ docker-compose up cucumbercraft
 sudo rm -rfd /home/qpaas/webapps/craftreport/allure-results
 sudo rm -rfd /home/qpaas/webapps/craftreport/css
 sudo rm -rfd /home/qpaas/webapps/craftreport/images
-sudo rm -rfd /home/qpaas/webapps/craftreport/project-reports.html
+sudo rm  /home/qpaas/webapps/craftreport/project-reports.html
 sudo rm -rfd /home/qpaas/craftresult
 docker cp cucumbercraft:/cucumbercraft-2.0/target/site/.  /home/qpaas/craftresult
 sudo cp -fr /home/qpaas/craftresult/* /home/qpaas/webapps/craftreport/
