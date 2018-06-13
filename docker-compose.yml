@@ -75,20 +75,19 @@ services:
 
 
 
-#  cognitivereporting:
-#    container_name: cognitivereporting
-#    image: ganeshtidke0901docker/cognitivereporting
-#    restart: always
-#   build: .
-#    ports:
-#      - "3232:3232"
-#    links:
-#      - mongo
-#    command: npm  install
-#             && npm start
-#    networks:
-#      mysubnet123:
-#        ipv4_address: 172.18.0.23
+  cognitivereporting:
+    container_name: cognitivereporting
+    image: ganeshtidke0901docker/cognitivereporting
+    restart: always
+    build: .
+    ports:
+      - "3232:3232"
+    links:
+      - mongo
+    command: npm  start
+    networks:
+      mysubnet123:
+        ipv4_address: 172.18.0.23
   
   mongo:
     container_name: mongo

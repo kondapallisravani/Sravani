@@ -1,24 +1,31 @@
 #!/bin/bash
 # wait-for-site.sh
 
-docker stop $(sudo docker ps -aq)
-docker rm $(sudo docker ps -aq)
-docker network rm $(sudo docker network ls)
-docker-compose up -d petclinic 
-docker-compose up -d zalenium
-docker-compose up -d mongo
-#docker-compose up -d cognitivereporting
+sudo docker stop $(sudo docker ps -aq)
+sudo docker rm $(sudo docker ps -aq)
+sudo docker network rm $(sudo docker network ls)
+sudo docker-compose up -d petclinic 
+sudo docker-compose up -d zalenium
+sudo docker-compose up -d mongo
+docker-compose up -d cognitivereporting
 
-git clone -b master --single-branch 'https://368731:gvt0901!@code.cognizant.com/368731/CRAFT_Dashboard.git'
-cd CRAFT_Dashboard
+#sudo git clone -b master --single-branch 'https://368731:gvt0901!@code.cognizant.com/368731/CRAFT_Dashboard.git'
+#cd CRAFT_Dashboard
 #docker rmi craft_dashboard 
 #docker  build --tag craft_dashboard:latest .
-docker-compose up -d craftdashboard
+sudo docker-compose up -d craftdashboard
 
-docker run -it --net=aws-demo_mysubnet123 --ip 172.18.0.23 ganeshtidke0901docker/cognitivereporting npm start
-echo "please click below for aggregated result http://192.168.40.192:3232"
+#sudo docker run -it --net=automation-docker-job_mysubnet123 --ip 172.18.0.23 ganeshtidke0901docker/cognitivereporting npm start
+#sudo docker run -d --net=aws-demo_mysubnet123 --ip 172.18.0.23 ganeshtidke0901docker/cognitivereporting npm start
+
+echo "please click below for aggregated result http://172.18.0.23:3232"
 
 
+
+
+
+
+#----------------------cucumber craft version ----------------------
 #git clone -b master --single-branch 'https://368731:gvt0901!@code.cognizant.com/368731/cucumbercraft-2.0.git'
 #cd cucumbercraft-2.0
 #docker rmi cucumbercraft
