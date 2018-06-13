@@ -23,19 +23,32 @@ services:
 #    networks:
 #      - mysubnet123
 
-  cucumbercraft:
-    container_name: cucumbercraft
-    image: "cucumbercraft"
-    command: mvn verify site -Dweb.app.docker.ip=172.18.0.22 -Dhub.host.ip=192.168.40.192
-    links:
-      - petclinic
-      - zalenium
-    depends_on:
-      - petclinic
-      - zalenium
-    networks:
-      - mysubnet123
+#  cucumbercraft:
+#    container_name: cucumbercraft
+#    image: "cucumbercraft"
+#    command: mvn verify site -Dweb.app.docker.ip=172.18.0.22 -Dhub.host.ip=192.168.40.192
+#    links:
+#      - petclinic
+#      - zalenium
+#    depends_on:
+#      - petclinic
+#      - zalenium
+#    networks:
+#      - mysubnet123
 
+  craftdashboard:
+      container_name: craftdashboard
+      image: "craft_dashboard"
+      command: java -cp .:supportlibraries/External_Jars/* allocator/Allocator
+      links:
+        - petclinic
+        - zalenium
+      depends_on:
+        - petclinic
+        - zalenium
+      networks:
+        - mysubnet123
+    
   zalenium:
     image: "dosel/zalenium"
     container_name: zalenium
@@ -59,6 +72,34 @@ services:
 #            --startTunnel false
     networks:
      - mysubnet123
+
+
+
+#  cognitivereporting:
+#    container_name: cognitivereporting
+#    image: ganeshtidke0901docker/cognitivereporting
+#    restart: always
+#   build: .
+#    ports:
+#      - "3232:3232"
+#    links:
+#      - mongo
+#    command: npm  install
+#             && npm start
+#    networks:
+#      mysubnet123:
+#        ipv4_address: 172.18.0.23
+  
+  mongo:
+    container_name: mongo
+    image: mongo
+    volumes:
+      - ./data:/data/dbdocker
+    ports:
+      - "27017:27017"
+    networks:
+      mysubnet123:
+        ipv4_address: 172.18.0.24
 
 networks:
   mysubnet123:
