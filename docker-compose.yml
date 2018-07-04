@@ -39,7 +39,7 @@ services:
   craftdashboard:
       container_name: craftdashboard
       image: "craft_dashboard"
-      command: java -cp .:supportlibraries/External_Jars/* -Ddashboard.docker.ip=192.168.40.192 -DLogin_Username=ganesh allocator/Allocator 
+      command: java -cp .:supportlibraries/External_Jars/* -Ddashboard.docker.ip=192.168.40.192 -DLogin_Username=ganesh -DProjectName=PROJECT-1.0 allocator/Allocator 
       links:
         - petclinic
         - zalenium
