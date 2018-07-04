@@ -39,7 +39,7 @@ services:
   craftdashboard:
       container_name: craftdashboard
       image: "craft_dashboard"
-      command: java -cp .:supportlibraries/External_Jars/* allocator/Allocator
+      command: java -cp .:supportlibraries/External_Jars/* -Ddashboard.docker.ip=192.168.40.192 -DLogin_Username=Ganesh allocator/Allocator 
       links:
         - petclinic
         - zalenium
@@ -82,23 +82,23 @@ services:
     build: .
     ports:
       - "3232:3232"
-    links:
-      - mongo
+#    links:
+#      - mongo
     command: npm  start
     networks:
       mysubnet123:
         ipv4_address: 172.18.0.23
   
-  mongo:
-    container_name: mongo
-    image: mongo
-    volumes:
-      - ./data:/data/dbdocker
-    ports:
-      - "27017:27017"
-    networks:
-      mysubnet123:
-        ipv4_address: 172.18.0.24
+#  mongo:
+#    container_name: mongo
+#    image: mongo
+#    volumes:
+#      - ./data:/data/dbdocker
+#    ports:
+#      - "27017:27017"
+#    networks:
+#      mysubnet123:
+#        ipv4_address: 172.18.0.24
 
 networks:
   mysubnet123:

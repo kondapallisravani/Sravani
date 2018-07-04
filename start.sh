@@ -7,7 +7,7 @@ sudo docker network rm $(sudo docker network ls)
 sudo docker-compose up -d petclinic 
 sudo docker-compose up -d zalenium
 sudo docker-compose up -d mongo
-docker-compose up -d cognitivereporting
+#docker-compose up -d cognitivereporting
 
 #sudo git clone -b master --single-branch 'https://368731:gvt0901!@code.cognizant.com/368731/CRAFT_Dashboard.git'
 #cd CRAFT_Dashboard
@@ -18,7 +18,7 @@ sudo docker-compose up -d craftdashboard
 #sudo docker run -it --net=automation-docker-job_mysubnet123 --ip 172.18.0.23 ganeshtidke0901docker/cognitivereporting npm start
 #sudo docker run -d --net=aws-demo_mysubnet123 --ip 172.18.0.23 ganeshtidke0901docker/cognitivereporting npm start
 
-echo "please click below for aggregated result http://172.18.0.23:3232"
+echo "please click below for aggregated result http://192.168.40.192:3232"
 
 
 
