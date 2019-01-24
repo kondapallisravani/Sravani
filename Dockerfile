@@ -26,5 +26,5 @@ MAINTAINER Ganesh Tidke
 #    && rm -rf /var/lib/apt/lists/*
 
 # Clone Git repo and build/execute automation package
-RUN git clone -b master --single-branch "https://678924:Change-1%40@code.cognizant.com/678924/CRAFT_Cucumber_Zalenium.git"
+RUN git clone -b master --single-branch "https://678924:Change-1@code.cognizant.com/678924/CRAFT_Cucumber_Zalenium.git"
 WORKDIR /CRAFT_Cucumber_Zalenium.git
