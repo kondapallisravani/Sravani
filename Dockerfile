@@ -1,5 +1,5 @@
 FROM ganeshtidke0901docker/script_parent
-MAINTAINER Ganesh Tidke
+MAINTAINER Mobile CoE
 
 # Update and install s/w
 #RUN apt-get update
